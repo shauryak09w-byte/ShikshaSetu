@@ -1,0 +1,152 @@
+@baseUrl = http://localhost:8080
+@studentId = 1
+@feedbackId = 1
+
+### Verify backend is running
+GET {{baseUrl}}/api/health
+Accept: application/json
+
+### List students
+GET {{baseUrl}}/api/students
+Accept: application/json
+
+### Create a student
+POST {{baseUrl}}/api/students
+Content-Type: application/json
+
+{
+  "studentCode": "STU-101",
+  "fullName": "Aarav Sharma",
+  "email": "aarav@example.edu",
+  "attendance": 72,
+  "internalMarks": 54,
+  "assignmentsCompleted": 68,
+  "previousFailures": 0,
+  "absences": 4,
+  "auditGroup": "Group A"
+}
+
+### Run a risk assessment
+POST {{baseUrl}}/api/students/{{studentId}}/assess
+
+### Get saved risk history
+GET {{baseUrl}}/api/students/{{studentId}}/risk-history
+
+### Save a previous subject result
+POST {{baseUrl}}/api/students/{{studentId}}/academic-records
+Content-Type: application/json
+
+{
+  "subject": "Mathematics",
+  "assessmentName": "Previous test",
+  "recordDate": "2026-10-20",
+  "marksObtained": 36,
+  "maxMarks": 100,
+  "attendancePercent": 78,
+  "notes": "Trend test record"
+}
+
+### Save a latest subject result (low mark can trigger an early warning)
+POST {{baseUrl}}/api/students/{{studentId}}/academic-records
+Content-Type: application/json
+
+{
+  "subject": "Mathematics",
+  "assessmentName": "Latest test",
+  "recordDate": "2026-11-04",
+  "marksObtained": 24,
+  "maxMarks": 100,
+  "attendancePercent": 64,
+  "consecutiveAbsences": 3,
+  "repeatedFailures": 2,
+  "notes": "Latest trend test record"
+}
+
+### View backend-derived early warnings
+GET {{baseUrl}}/api/students/{{studentId}}/early-warnings
+Accept: application/json
+
+### Re-run the assessment to include dated trend warnings
+POST {{baseUrl}}/api/students/{{studentId}}/assess
+
+### Log mentor action and schedule follow-up
+POST {{baseUrl}}/api/students/{{studentId}}/feedback
+Content-Type: application/json
+
+{
+  "mentorName": "Mentor Demo",
+  "observation": "Student identified difficulty with the latest Mathematics topic.",
+  "actionTaken": "Arrange a short concept review.",
+  "weeklyTarget": "Complete two practice sessions before the next check-in.",
+  "followUpDate": "2026-11-12T09:00:00"
+}
+
+### List mentor notes and follow-ups
+GET {{baseUrl}}/api/students/{{studentId}}/feedback
+Accept: application/json
+
+### Update an outcome (replace feedbackId with the id returned above)
+PATCH {{baseUrl}}/api/students/{{studentId}}/feedback/{{feedbackId}}/outcome
+Content-Type: application/json
+
+{
+  "status": "Completed · improvement noted",
+  "outcomeNote": "Student completed the weekly target and requested another review."
+}
+
+### Intervention catalogue
+GET {{baseUrl}}/api/interventions
+Accept: application/json
+
+### Fairness audit
+GET {{baseUrl}}/api/fairness/audit
+Accept: application/json
+
+### AI system capability status (no trained model connected yet)
+GET {{baseUrl}}/api/ai/status
+Accept: application/json
+
+### AI Admin central overview (student values + latest assessments + trend warnings)
+GET {{baseUrl}}/api/ai-admin/overview
+Accept: application/json
+
+### AI Admin student registry
+GET {{baseUrl}}/api/ai-admin/students
+Accept: application/json
+
+### Inspect one student's complete backend record and review history
+GET {{baseUrl}}/api/ai-admin/students/{{studentId}}
+Accept: application/json
+
+### Save a manual interpretation without changing the model score
+POST {{baseUrl}}/api/ai-admin/students/{{studentId}}/interpretations
+Content-Type: application/json
+
+{
+  "reviewStatus": "Reviewed with student",
+  "interpretation": "The student explained that a timetable change affected attendance. Current indicators should be reviewed with that context; they do not establish the cause.",
+  "evidence": "Discussed the current timetable and checked the latest dated attendance records.",
+  "nextAction": "Mentor to agree a manageable attendance plan and review it next week."
+}
+
+### Get all manual interpretations
+GET {{baseUrl}}/api/ai-admin/interpretations
+Accept: application/json
+
+### Get manual interpretations for one student
+GET {{baseUrl}}/api/ai-admin/students/{{studentId}}/interpretations
+Accept: application/json
+
+### Update an existing manual interpretation (replace 1 with its returned ID)
+PUT {{baseUrl}}/api/ai-admin/students/{{studentId}}/interpretations/1
+Content-Type: application/json
+
+{
+  "reviewStatus": "Follow-up planned",
+  "interpretation": "After speaking with the student, the mentor identified timetable and transport constraints. This context should be revisited during the next check-in.",
+  "evidence": "Student conversation and dated attendance records.",
+  "nextAction": "Review the agreed attendance target after one week."
+}
+
+### Delete one manual interpretation (replace 1 with its returned ID)
+DELETE {{baseUrl}}/api/ai-admin/students/{{studentId}}/interpretations/1

@@ -1,0 +1,310 @@
+/* ShikshaSetu visual refinement — vivid light mode + leaf details kept to card edges. */
+:root,
+html[data-theme="light"],
+html:not([data-theme="dark"]) {
+  color-scheme: light;
+  --bg: #e4f5e9;
+  --bg2: #d1ecdc;
+  --text: #17392d;
+  --muted: #4d6c5d;
+  --muted2: #789184;
+  --primary: #087c50;
+  --primary2: #05633f;
+  --green: #169b68;
+  --amber: #b87922;
+  --red: #b94e50;
+  --violet: #7662b8;
+  --glass-alpha: .68;
+  --surface: rgba(250, 255, 251, .76);
+  --surface-strong: rgba(249, 255, 251, .94);
+  --surface-soft: rgba(215, 242, 225, .56);
+  --border: rgba(255, 255, 255, .86);
+  --border-soft: rgba(12, 93, 59, .16);
+  --glass-blur: 24px;
+  --shadow: 0 18px 52px rgba(18, 81, 52, .13), inset 0 1px 0 rgba(255,255,255,.93);
+  --shadow-sm: 0 9px 26px rgba(18, 81, 52, .11);
+  --page: linear-gradient(135deg, #e6f8ec 0%, #d8f1e2 48%, #c7e9d7 100%);
+  --field: rgba(251, 255, 252, .84);
+  --sidebar: rgba(245, 255, 248, .70);
+  --aero-focus: #16a56e;
+  --scene-light-veil: linear-gradient(135deg, rgba(226,255,237,.80), rgba(201,244,220,.68) 48%, rgba(240,255,245,.76));
+}
+
+html[data-theme="light"] body,
+html:not([data-theme="dark"]) body {
+  color: #17392d;
+  background: var(--page);
+}
+html[data-theme="light"] body::before,
+html:not([data-theme="dark"]) body::before {
+  background-image:
+    radial-gradient(ellipse at 12% 8%, rgba(89, 204, 139, .24), transparent 34%),
+    radial-gradient(ellipse at 88% 88%, rgba(37, 158, 111, .18), transparent 38%),
+    linear-gradient(135deg, rgba(223, 250, 232, .78), rgba(204, 239, 218, .67)),
+    var(--scene-current-image, url("assets/forest-moss-background.jpg")) !important;
+  background-size: auto, auto, auto, cover !important;
+  background-position: center, center, center, center !important;
+  background-attachment: fixed !important;
+  opacity: 1 !important;
+}
+html[data-theme="light"] body::after,
+html:not([data-theme="dark"]) body::after {
+  background-image:
+    linear-gradient(135deg, rgba(225,255,237,.72), rgba(197,239,216,.65)),
+    var(--scene-next-image, var(--scene-current-image, url("assets/forest-moss-background.jpg"))) !important;
+}
+
+/* Main dashboard cards: frosted and translucent, with no photographic texture under text. */
+html[data-theme="light"] .app-shell .glass,
+html:not([data-theme="dark"]) .app-shell .glass {
+  position: relative;
+  isolation: isolate;
+  background-color: rgba(248, 255, 250, .70) !important;
+  background-image: linear-gradient(145deg, rgba(255,255,255,.52), rgba(213,242,225,.24)) !important;
+  border: 1px solid rgba(255,255,255,.88) !important;
+  box-shadow: 0 17px 48px rgba(18,86,55,.12), inset 0 1px 0 rgba(255,255,255,.96), inset 0 0 0 1px rgba(33,135,83,.045) !important;
+  -webkit-backdrop-filter: blur(25px) saturate(155%);
+  backdrop-filter: blur(25px) saturate(155%);
+}
+html[data-theme="dark"] .app-shell .glass {
+  position: relative;
+  isolation: isolate;
+  background-color: rgba(5, 31, 17, .70) !important;
+  background-image: linear-gradient(145deg, rgba(26,76,44,.52), rgba(2,23,12,.40)) !important;
+  border-color: rgba(152,218,127,.31) !important;
+  -webkit-backdrop-filter: blur(25px) saturate(150%);
+  backdrop-filter: blur(25px) saturate(150%);
+}
+.app-shell .glass::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  border-radius: inherit !important;
+  background: url("assets/card-edge-leaves.svg") center / 100% 100% no-repeat !important;
+  opacity: .20 !important;
+  mix-blend-mode: multiply !important;
+  filter: saturate(.95) !important;
+}
+html[data-theme="dark"] .app-shell .glass::before {
+  opacity: .22 !important;
+  mix-blend-mode: screen !important;
+  filter: brightness(1.18) saturate(.9) !important;
+}
+.app-shell .glass::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 1px !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  border: 1px solid rgba(255,255,255,.29) !important;
+  border-radius: inherit !important;
+  background: linear-gradient(125deg, rgba(255,255,255,.23), transparent 32%, transparent 74%, rgba(48,155,98,.035)) !important;
+  opacity: 1 !important;
+}
+html[data-theme="dark"] .app-shell .glass::after {
+  border-color: rgba(189,236,159,.12) !important;
+  background: linear-gradient(125deg, rgba(224,255,209,.13), transparent 35%, transparent 76%, rgba(119,197,89,.08)) !important;
+}
+.app-shell .glass > * { position: relative; z-index: 2; }
+.app-shell .sidebar.glass::before,
+.app-shell .topbar.glass::before { opacity: .055 !important; }
+
+/* The old moss photos are removed from these dashboard cards too. The motif remains at the perimeter. */
+html[data-theme="light"] .app-shell :is(.edash-hero,.edash-kpi,.edash-panel,.edash-quick-strip),
+html:not([data-theme="dark"]) .app-shell :is(.edash-hero,.edash-kpi,.edash-panel,.edash-quick-strip) {
+  position: relative;
+  isolation: isolate;
+  color: #17392d !important;
+  background-color: rgba(249,255,251,.72) !important;
+  background-image: linear-gradient(145deg, rgba(255,255,255,.72), rgba(210,241,222,.53)) !important;
+  border: 1px solid rgba(255,255,255,.91) !important;
+  box-shadow: 0 17px 42px rgba(16,91,56,.13), inset 0 1px 0 rgba(255,255,255,.95) !important;
+  backdrop-filter: blur(24px) saturate(160%);
+}
+html[data-theme="dark"] .app-shell :is(.edash-hero,.edash-kpi,.edash-panel,.edash-quick-strip) {
+  position: relative;
+  isolation: isolate;
+  background-color: rgba(3,28,13,.75) !important;
+  background-image: linear-gradient(145deg, rgba(16,67,31,.75), rgba(2,21,9,.68)) !important;
+  border-color: rgba(145,207,104,.30) !important;
+}
+.app-shell :is(.edash-hero,.edash-kpi,.edash-panel,.edash-quick-strip)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: url("assets/card-edge-leaves.svg") center / 100% 100% no-repeat;
+  opacity: .16;
+}
+.app-shell :is(.edash-hero,.edash-kpi,.edash-panel,.edash-quick-strip) > * { position: relative; z-index: 1; }
+
+/* A saturated, elegant emerald palette makes light mode as expressive as dark mode. */
+html[data-theme="light"] .app-shell .hero-panel,
+html:not([data-theme="dark"]) .app-shell .hero-panel {
+  color: #f3fff6 !important;
+  background: linear-gradient(112deg, rgba(10,111,68,.94), rgba(23,150,94,.88) 57%, rgba(86,184,125,.80)) !important;
+  border: 1px solid rgba(255,255,255,.60) !important;
+  box-shadow: 0 20px 46px rgba(8,92,54,.22), inset 0 1px 0 rgba(255,255,255,.35) !important;
+}
+html[data-theme="light"] .app-shell .hero-copy h2,
+html:not([data-theme="dark"]) .app-shell .hero-copy h2 { color: #f5fff7 !important; text-shadow: 0 2px 8px rgba(0,50,27,.25) !important; }
+html[data-theme="light"] .app-shell .hero-copy h2 em,
+html:not([data-theme="dark"]) .app-shell .hero-copy h2 em { color: #c8ff91 !important; }
+html[data-theme="light"] .app-shell .hero-copy p,
+html:not([data-theme="dark"]) .app-shell .hero-copy p { color: rgba(245,255,248,.91) !important; }
+html[data-theme="light"] .app-shell .hero-kicker,
+html:not([data-theme="dark"]) .app-shell .hero-kicker { color: #cfff9d !important; }
+html[data-theme="light"] .app-shell .hero-button,
+html:not([data-theme="dark"]) .app-shell .hero-button { color: #0b432b !important; background: linear-gradient(135deg,#e5ffb8,#a9e77c) !important; box-shadow: 0 8px 20px rgba(0,48,27,.22) !important; }
+html[data-theme="light"] .app-shell .topbar.glass,
+html:not([data-theme="dark"]) .app-shell .topbar.glass { background: rgba(241,255,246,.65) !important; }
+
+html[data-theme="light"] .app-shell :is(h1,h2,h3,h4,.panel-heading,.section-heading,.modal-heading),
+html:not([data-theme="dark"]) .app-shell :is(h1,h2,h3,h4,.panel-heading,.section-heading,.modal-heading) {
+  color: #173c2d !important;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+}
+html[data-theme="light"] .app-shell :is(.page-subtitle,.panel-heading p,.section-heading p,.support-muted,.ai-admin-footnote,.form-hint,.edash-overline,.workspace-label),
+html:not([data-theme="dark"]) .app-shell :is(.page-subtitle,.panel-heading p,.section-heading p,.support-muted,.ai-admin-footnote,.form-hint,.edash-overline,.workspace-label) {
+  color: #527363 !important;
+  text-shadow: none !important;
+}
+html[data-theme="light"] .app-shell .eyebrow,
+html:not([data-theme="dark"]) .app-shell .eyebrow { color: #08794d !important; }
+html[data-theme="light"] .app-shell :is(.field-label input,.field-label select,.field-label textarea,.search-field,.filters-panel select),
+html:not([data-theme="dark"]) .app-shell :is(.field-label input,.field-label select,.field-label textarea,.search-field,.filters-panel select) {
+  color: #193e2f !important;
+  background: rgba(250,255,251,.89) !important;
+  border-color: rgba(27,121,75,.23) !important;
+  box-shadow: inset 0 1px 2px rgba(17,82,49,.045), 0 3px 10px rgba(17,82,49,.035) !important;
+}
+html[data-theme="light"] .app-shell :is(input,textarea,select)::placeholder,
+html:not([data-theme="dark"]) .app-shell :is(input,textarea,select)::placeholder { color: #779283 !important; opacity: 1; }
+html[data-theme="light"] .app-shell .primary-button,
+html:not([data-theme="dark"]) .app-shell .primary-button { background: linear-gradient(135deg,#0d9b62,#08754b) !important; color: white !important; box-shadow: 0 8px 18px rgba(7,120,74,.23) !important; }
+html[data-theme="light"] .app-shell .nav-item.active,
+html:not([data-theme="dark"]) .app-shell .nav-item.active { background: linear-gradient(110deg,rgba(17,156,95,.16),rgba(44,189,123,.075)) !important; color: #08784c !important; box-shadow: inset 3px 0 #12a36b !important; }
+html[data-theme="light"] .app-shell .stat-icon,
+html:not([data-theme="dark"]) .app-shell .stat-icon { box-shadow: 0 7px 16px rgba(21,111,67,.10); }
+
+/* Institutional admin cards use the same translucent material and corner-only foliage. */
+.institution-portal .ip-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: rgba(247,255,250,.74) !important;
+  border-color: rgba(255,255,255,.88) !important;
+  box-shadow: 0 17px 44px rgba(17,86,55,.12), inset 0 1px 0 rgba(255,255,255,.94) !important;
+  backdrop-filter: blur(24px) saturate(155%);
+}
+.institution-portal .ip-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: url("assets/card-edge-leaves.svg") center / 100% 100% no-repeat;
+  opacity: .16;
+}
+.institution-portal .ip-card > * { position: relative; z-index: 1; }
+html[data-theme="dark"] .institution-portal .ip-card { background: rgba(5,35,18,.78) !important; }
+html[data-theme="dark"] .institution-portal .ip-card::before { opacity: .23; mix-blend-mode: screen; }
+
+/* Login: retain the split layout, but remove full-face leaf photography from the form. */
+.login-page::before {
+  background-image:
+    radial-gradient(ellipse at 15% 14%, rgba(54,179,111,.30), transparent 35%),
+    radial-gradient(ellipse at 82% 83%, rgba(31,146,104,.23), transparent 38%),
+    linear-gradient(135deg, rgba(229,255,237,.56), rgba(194,239,215,.43)),
+    var(--scene-current-image, url("assets/forest-moss-background.jpg")) !important;
+  background-size: auto, auto, auto, cover !important;
+}
+html[data-theme="light"] .login-page,
+html:not([data-theme="dark"]) .login-page { color: #183d2e !important; }
+html[data-theme="light"] .login-topbar,
+html:not([data-theme="dark"]) .login-topbar { background: rgba(247,255,250,.66) !important; border-color: rgba(255,255,255,.80) !important; box-shadow: 0 12px 34px rgba(20,93,57,.12), inset 0 1px 0 white !important; }
+html[data-theme="light"] .login-brand,
+html:not([data-theme="dark"]) .login-brand { color: #17412f !important; }
+html[data-theme="light"] .login-brand small,
+html:not([data-theme="dark"]) .login-brand small { color: #527963 !important; }
+html[data-theme="light"] .login-top-label,
+html:not([data-theme="dark"]) .login-top-label { color: #1d6545 !important; background: rgba(37,159,97,.10) !important; border-color: rgba(20,127,76,.15) !important; }
+html[data-theme="light"] .login-theme-button,
+html:not([data-theme="dark"]) .login-theme-button { color: #145337 !important; background: rgba(30,148,91,.10) !important; border-color: rgba(20,127,76,.20) !important; }
+html[data-theme="light"] .login-eyebrow,
+html:not([data-theme="dark"]) .login-eyebrow { color: #14764c !important; text-shadow: none !important; }
+html[data-theme="light"] .login-story h1,
+html:not([data-theme="dark"]) .login-story h1 { color: #173d2d !important; text-shadow: 0 2px 14px rgba(255,255,255,.52) !important; }
+html[data-theme="light"] .login-story h1 em,
+html:not([data-theme="dark"]) .login-story h1 em { color: #078c59 !important; }
+html[data-theme="light"] .login-story-copy,
+html:not([data-theme="dark"]) .login-story-copy { color: #365f4b !important; text-shadow: none !important; }
+html[data-theme="light"] .login-benefit,
+html:not([data-theme="dark"]) .login-benefit { background: rgba(247,255,250,.66) !important; border-color: rgba(255,255,255,.84) !important; box-shadow: 0 12px 27px rgba(20,93,57,.10), inset 0 1px 0 white !important; }
+html[data-theme="light"] .login-benefit b,
+html:not([data-theme="dark"]) .login-benefit b { color: #1a4b35 !important; }
+html[data-theme="light"] .login-benefit small,
+html:not([data-theme="dark"]) .login-benefit small { color: #587866 !important; }
+html[data-theme="light"] .login-principle,
+html:not([data-theme="dark"]) .login-principle { background: linear-gradient(90deg,rgba(247,255,250,.78),rgba(247,255,250,0)) !important; border-left-color: #159c65 !important; }
+html[data-theme="light"] .login-principle b,
+html:not([data-theme="dark"]) .login-principle b { color: #1e5138 !important; }
+html[data-theme="light"] .login-principle small,
+html:not([data-theme="dark"]) .login-principle small { color: #588069 !important; }
+.login-card::before {
+  background: url("assets/card-edge-leaves.svg") center / 100% 100% no-repeat !important;
+  opacity: .16 !important;
+  mix-blend-mode: multiply !important;
+}
+.login-card::after {
+  background: linear-gradient(125deg, rgba(255,255,255,.30), transparent 34%, transparent 76%, rgba(45,155,98,.06)) !important;
+  border: 1px solid rgba(255,255,255,.34) !important;
+  opacity: 1 !important;
+}
+html[data-theme="light"] .login-card,
+html:not([data-theme="dark"]) .login-card {
+  color: #183d2d !important;
+  background: rgba(247,255,250,.81) !important;
+  border-color: rgba(255,255,255,.93) !important;
+  box-shadow: 0 27px 70px rgba(14,82,51,.20), inset 0 1px 0 white !important;
+}
+html[data-theme="light"] .login-card h2,
+html:not([data-theme="dark"]) .login-card h2 { color: #173f2d !important; }
+html[data-theme="light"] .login-card-subtitle,
+html:not([data-theme="dark"]) .login-card-subtitle { color: #597663 !important; }
+html[data-theme="dark"] .login-card::before { background: url("assets/card-edge-leaves.svg") center / 100% 100% no-repeat !important; opacity: .22 !important; mix-blend-mode: screen !important; }
+html[data-theme="dark"] .login-card::after { background: linear-gradient(125deg,rgba(223,255,209,.13),transparent 38%,transparent 75%,rgba(145,214,91,.08)) !important; }
+
+/* Readable institutional portal light mode. */
+html[data-theme="light"] .institution-portal,
+html:not([data-theme="dark"]) .institution-portal { color: #183c2e; }
+html[data-theme="light"] .institution-portal .ip-card,
+html:not([data-theme="dark"]) .institution-portal .ip-card { color: #183c2e; }
+html[data-theme="light"] .institution-portal :is(.ip-card h2,.ip-section-head h2),
+html:not([data-theme="dark"]) .institution-portal :is(.ip-card h2,.ip-section-head h2) { color: #173e2e; }
+html[data-theme="light"] .institution-portal :is(.ip-field input,.ip-inline-field select,.ip-review-control input),
+html:not([data-theme="dark"]) .institution-portal :is(.ip-field input,.ip-inline-field select,.ip-review-control input) { background: rgba(251,255,252,.90); color: #173b2c; border-color: rgba(20,125,75,.22); }
+
+/* Raise each card's content wrapper above its edge-only illustration. */
+.app-shell .glass > *,
+.institution-portal .ip-card > *,
+.login-card-inner,
+.login-benefit > *,
+.app-shell :is(.edash-hero,.edash-kpi,.edash-panel,.edash-quick-strip) > * {
+  position: relative;
+  z-index: 2;
+}
+html[data-theme="dark"] .login-page::before {
+  background-image: radial-gradient(ellipse at 15% 14%, rgba(74,146,63,.20), transparent 35%),
+    linear-gradient(135deg, rgba(1,10,4,.72), rgba(2,23,9,.80)),
+    var(--scene-current-image, url("assets/forest-moss-background.jpg")) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .app-shell .glass, .institution-portal .ip-card, .login-card { transition: none !important; }
+}

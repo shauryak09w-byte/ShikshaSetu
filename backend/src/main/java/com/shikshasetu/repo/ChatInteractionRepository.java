@@ -1,0 +1,3 @@
+package com.shikshasetu.repo;
+import com.shikshasetu.model.ChatInteraction; import org.springframework.data.jpa.repository.JpaRepository; import java.time.LocalDateTime; import java.util.*;
+public interface ChatInteractionRepository extends JpaRepository<ChatInteraction,Long>{List<ChatInteraction> findTop500ByInstitutionIdAndExpiresAtAfterOrderByCreatedAtDesc(Long tenant,LocalDateTime now); List<ChatInteraction> findTop500ByStudentIdAndExpiresAtAfterOrderByCreatedAtDesc(Long student,LocalDateTime now); List<ChatInteraction> findByInstitutionIdAndCreatedAtAfterAndExpiresAtAfter(Long tenant,LocalDateTime since,LocalDateTime now); long countByInstitutionId(Long tenant); void deleteByStudentId(Long studentId); void deleteByExpiresAtBefore(LocalDateTime before);}

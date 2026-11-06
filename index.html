@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html data-theme="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Sign in to ShikshaSetu — a supportive student success and AI Mentor workspace." name="description"/>
+<meta content="#07160b" name="theme-color"/>
+<title>ShikshaSetu — Login</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&amp;family=Outfit:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<script>
+    (() => {
+      try {
+        const theme = localStorage.getItem("shikshasetu-theme");
+        if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+      } catch (_) {}
+    })();
+  </script>
+<script src="theme-controller.js"></script>
+<link href="styles.css" rel="stylesheet"/>
+<link href="login.css" rel="stylesheet"/>
+  <script src="api-config.js"></script>
+  <link rel="stylesheet" href="campus-visual-polish.css">
+</head>
+<body class="login-page">
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="ambient ambient-c"></div>
+<header class="login-topbar">
+<a aria-label="ShikshaSetu login home" class="login-brand" href="index.html">
+<span class="login-brand-mark"><svg aria-hidden="true" viewbox="0 0 32 32"><path d="M4 13.2 16 6l12 7.2L16 20.4 4 13.2Z" fill="none" stroke="currentColor" stroke-width="2"></path><path d="M9 16.2v6.1c4.5 3.2 9.5 3.2 14 0v-6.1M28 13v8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg></span>
+<span><strong>ShikshaSetu</strong><small>STUDENT SUCCESS</small></span>
+</a>
+<div class="login-top-actions">
+<span class="login-top-label"><i></i> A greener path to student success</span>
+<button aria-label="Switch light and dark theme" class="login-theme-button" id="loginThemeToggle" title="Switch theme" type="button">◐</button>
+</div>
+</header>
+<main class="login-layout">
+<section class="login-story">
+<div class="login-eyebrow"><i></i> EDUCATION · EMPLOYABILITY · PERSONAL GROWTH</div>
+<h1>Every learner deserves<br/><em>a mentor who grows with them.</em></h1>
+<p class="login-story-copy">A calm, supportive workspace for understanding student progress, finding the right learning support and turning early signals into meaningful action.</p>
+<div class="login-benefits">
+<article class="login-benefit"><span class="login-benefit-icon">⌕</span><div><b>Understand progress</b><small>Explore academic signals with clear explanations.</small></div></article>
+<article class="login-benefit"><span class="login-benefit-icon">❧</span><div><b>Grow with support</b><small>Build realistic goals with your AI Mentor and mentors.</small></div></article>
+<article class="login-benefit"><span class="login-benefit-icon">◈</span><div><b>Keep it fair</b><small>Use insights as prompts, never permanent labels.</small></div></article>
+</div>
+<div class="login-principle"><b>“Use insights to open a conversation — never to define a student.”</b><small>THE SHIKSHASETU PRINCIPLE</small></div>
+</section>
+<section aria-labelledby="loginTitle" class="login-card">
+<div class="login-card-inner">
+<div class="login-card-icon">✦</div>
+<div class="login-card-kicker">WELCOME TO SHIKSHASETU</div>
+<h2 id="loginTitle">Welcome back</h2>
+<p class="login-card-subtitle" id="loginSubtitle">Sign in and continue to your ShikshaSetu workspace.</p>
+<div aria-label="Account access" class="login-tabs" role="tablist">
+<button aria-controls="loginForm" aria-selected="true" class="login-tab active" id="loginTab" role="tab" type="button">Sign in</button>
+<button aria-controls="signupForm" aria-selected="false" class="login-tab" id="signupTab" role="tab" type="button">Create account</button>
+</div>
+<div class="firebase-setup-status" id="firebaseSetupStatus" data-state="loading" role="status" aria-live="polite">
+<span id="firebaseSetupMessage">Checking Google sign-in configuration…</span>
+<div class="firebase-setup-actions"><a href="FIREBASE-SETUP.md" target="_blank" rel="noopener">Open Firebase setup guide</a><button id="retryFirebaseCheck" type="button">Check again</button></div>
+</div>
+<form autocomplete="off" class="login-form" id="loginForm" novalidate="">
+<div class="google-signin-intro"><b>Sign in with your registered details</b><small>Enter your email and Institution / Organization ID, then verify the same email with Google. Super Admins can leave the ID blank.</small></div>
+<label class="login-field"><span>Email address</span><div class="login-input-wrap"><span class="login-input-icon">✉</span><input autocomplete="email" id="loginEmail" name="email" placeholder="you@example.com" required type="email"/></div></label>
+<label class="login-field"><span>Institution / Organization ID <small>(required for students and Institution Admins)</small></span><div class="login-input-wrap"><span class="login-input-icon">⌂</span><input autocapitalize="characters" autocomplete="organization" id="loginInstitutionCode" name="institutionCode" maxlength="20" placeholder="e.g. SS-1A2B3C4D" type="text"/></div></label>
+<div class="google-button-host"><button class="firebase-google-button" id="loginGoogleButton" type="button" disabled><span class="google-mark" aria-hidden="true">G</span><span>Continue with Google</span></button></div>
+<p aria-live="polite" class="login-feedback" id="loginFeedback" role="status"></p>
+<p class="login-disclaimer"><b>Secure access:</b> Google verifies your email. ShikshaSetu then checks your approved role and institution permissions. Your existing student and institution data stays linked to the same email address.</p>
+</form>
+<form autocomplete="off" class="login-form" hidden="" id="signupForm" novalidate="">
+<div class="login-form-grid">
+<label class="login-field"><span>Full name</span><div class="login-input-wrap"><span class="login-input-icon">♙</span><input autocapitalize="words" autocomplete="name" id="signupFullName" maxlength="80" name="fullName" placeholder="Your full name" required="" type="text"/></div></label>
+<label class="login-field"><span>Age</span><div class="login-input-wrap"><span class="login-input-icon">◷</span><input id="signupAge" max="100" min="13" name="age" placeholder="e.g. 20" required="" type="number"/></div></label>
+</div>
+<label class="login-field"><span>Email address</span><div class="login-input-wrap"><span class="login-input-icon">✉</span><input autocomplete="email" id="signupEmail" name="email" placeholder="you@example.com" required type="email"/></div></label>
+<div class="google-verified-note" id="googleVerifiedNote">Continue with Google using this same email address. Your email is verified securely before an enrollment request is created.</div>
+<label class="login-field"><span>Institution / Organization ID</span><div class="login-input-wrap"><span class="login-input-icon">⌂</span><input id="signupInstitutionCode" name="institutionCode" maxlength="20" placeholder="Provided by your college" required type="text"/></div></label>
+<div class="login-mentor-name">
+<span class="login-mentor-icon">✦</span>
+<div class="login-mentor-copy"><b>What would you like to name your AI Mentor?</b><small>Your personal learning companion will use this name throughout ShikshaSetu.</small></div>
+<div class="login-input-wrap"><span class="login-input-icon">✧</span><input autocapitalize="words" autocomplete="nickname" id="signupAiMentorName" maxlength="32" minlength="2" name="aiMentorName" placeholder="e.g. Aarya, Moss, Saanvi…" required="" type="text"/></div>
+</div>
+<label class="login-check"><input id="signupConsent" required="" type="checkbox"/> I understand academic insights are supportive signals, not diagnoses or permanent labels.</label>
+<label class="login-check"><input id="signupPrivacyConsent" required="" type="checkbox"/> I have read the <a href="privacy-notice.html" target="_blank" rel="noopener">institutional privacy notice</a> and understand my authorised institution may access relevant academic activity.</label>
+<label class="login-check"><input id="signupChatMonitoringConsent" type="checkbox"/> Optional: I consent to chatbot messages, topics and usage patterns being stored and reviewed by authorised institutional administrators for student support and safety. I can leave this unchecked and still request campus access; chatbot use will remain paused until I opt in.</label>
+<div class="google-button-host"><button class="firebase-google-button" id="signupGoogleButton" type="button" disabled><span class="google-mark" aria-hidden="true">G</span><span>Continue with Google to request access</span></button></div>
+<p aria-live="polite" class="login-feedback" id="signupFeedback" role="status"></p>
+<p class="login-disclaimer"><b>Institutional enrollment:</b> your request is sent to your college after Google verifies your email. You can enter only after an institution administrator approves your access.</p>
+</form>
+<div class="login-card-footer"><span>◈</span> Explainable insights · Mentor-led support · Fairness safeguards</div>
+</div>
+</section>
+</main>
+<footer class="login-footer"><span>© ShikshaSetu · Student success through supportive guidance</span><span><b>Learn</b> · <b>Grow</b> · <b>Connect</b></span></footer>
+<script type="module" src="login.js"></script>
+<script src="nature-gallery.js"></script>
+</body>
+</html>

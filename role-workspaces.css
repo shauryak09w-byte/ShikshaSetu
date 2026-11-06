@@ -1,0 +1,31 @@
+/* Role-specific layouts: preserves existing nature gallery, theme and glass surfaces. */
+.role-admin-metrics,.role-stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:18px 0}
+.role-stat-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.role-admin-score-panel{margin:18px 0;padding:20px}
+.role-admin-score-panel .table-wrap{overflow-x:auto}
+.role-welcome-panel{margin:16px 0 22px;padding:32px;min-height:190px;display:flex;align-items:center}
+.role-welcome-content{max-width:680px}
+.role-welcome-content h2{font-size:clamp(24px,3vw,38px);margin:10px 0}
+.role-welcome-content p{max-width:560px}
+.role-action-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.role-feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.role-feature{border:1px solid rgba(176,215,157,.22);border-radius:16px;padding:20px;background:rgba(20,49,25,.16);color:inherit;text-align:left;cursor:pointer;font:inherit;display:grid;gap:10px}
+.role-feature:hover{background:rgba(90,135,75,.18)}
+.role-feature strong{font-size:16px}.role-feature small{opacity:.8;line-height:1.5}
+.role-select{width:100%;max-width:420px;padding:12px;border-radius:12px;background:rgba(20,49,25,.25);color:inherit;border:1px solid rgba(176,215,157,.3)}
+.role-label{white-space:nowrap}
+@media(max-width:900px){.role-stat-grid,.role-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.role-admin-metrics,.role-stat-grid,.role-feature-grid{grid-template-columns:1fr}.role-welcome-panel{padding:20px}.role-label{display:none}}
+
+/* Mentor directory inherits existing forest backgrounds and glass panels. */
+.mentor-directory-search{display:flex;gap:12px;align-items:center;padding:16px;margin:18px 0;flex-wrap:wrap}
+.mentor-directory-search input{flex:1;min-width:240px}
+.mentor-directory-search input,.mentor-directory-search select{border:1px solid var(--border-soft);background:var(--surface,rgba(18,48,22,.4));color:var(--text);padding:13px 15px;border-radius:14px;font:inherit}
+.mentor-directory-card{padding:20px;margin:18px 0}
+.mentor-directory-card .table-wrap{overflow-x:auto}
+.mentor-directory-card table{width:100%;min-width:760px}
+.mentor-directory-card .row-action{white-space:nowrap}
+.mentor-progress-detail{padding:22px;margin:18px 0;scroll-margin-top:110px}
+.mentor-progress-history{display:grid;gap:12px;margin:16px 0}
+.mentor-progress-history .progress-history-item{border:1px solid var(--border-soft);border-radius:14px;padding:14px}
+@media(max-width:650px){.mentor-directory-search input,.mentor-directory-search select,.mentor-directory-search button{width:100%}}

@@ -1,0 +1,14 @@
+.DS_Store
+.vscode/
+**/.venv/
+**/__pycache__/
+**/*.py[cod]
+backend-fastapi/.env
+backend-fastapi/data/*.db
+backend-fastapi/data/*.db-shm
+backend-fastapi/data/*.db-wal
+backend-fastapi/data/*.joblib
+backend-fastapi/data/*metadata*.json
+
+backend-fastapi/firebase-service-account*.json
+backend-fastapi/*service-account*.json

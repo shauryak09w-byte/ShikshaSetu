@@ -1,0 +1,35 @@
+/* Student progress tracker: retains the original moss/glass theme and asset-backed backgrounds. */
+.student-progress-center{position:relative;overflow:hidden}
+.progress-tracker-layout{display:grid;grid-template-columns:minmax(270px,.95fr) minmax(320px,1.05fr);gap:24px}
+.progress-tracker-form{display:grid;align-content:start;gap:12px}
+.progress-tracker-form select,.progress-tracker-form input,.progress-tracker-form textarea{width:100%;min-width:0;box-sizing:border-box;border:1px solid rgba(200,230,180,.26);border-radius:12px;background:rgba(7,24,11,.44);color:inherit;padding:11px 13px;font:inherit}
+.progress-tracker-form select option{background:#17311b;color:#f2ffe8}
+.progress-input-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.progress-input-grid label{display:grid;gap:7px;font-size:12px;color:var(--muted,#d2dfc7)}
+.progress-input-grid input{font-size:15px;color:inherit}
+.progress-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.progress-save-status{font-size:12px;color:var(--muted,#d2dfc7)}
+.progress-overview{min-width:0}
+.progress-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.progress-stat{padding:17px;border:1px solid rgba(190,230,160,.22);border-radius:17px;background:rgba(7,28,13,.37);min-width:0}
+.progress-stat small{display:block;font-size:10px;letter-spacing:.09em;font-weight:700;color:var(--muted,#d2dfc7)}
+.progress-stat strong{display:block;font-size:clamp(23px,3vw,34px);line-height:1.3;margin:9px 0;color:inherit}
+.progress-stat p{margin:0;font-size:11px;color:var(--muted,#d2dfc7)}
+.progress-track{height:7px;border-radius:30px;background:rgba(255,255,255,.13);overflow:hidden;margin-top:12px}
+.progress-track span{display:block;height:100%;width:0;background:linear-gradient(90deg,#7cab4b,#c6ec8a);border-radius:30px;transition:width .3s}
+.progress-history-heading{display:flex;align-items:center;justify-content:space-between;margin:20px 0 12px;gap:12px}
+.progress-history-heading h4{margin:0}
+.progress-history{display:grid;gap:9px;max-height:300px;overflow:auto}
+.progress-history-item{padding:12px 14px;border-radius:13px;background:rgba(8,27,13,.35);border:1px solid rgba(190,230,160,.16)}
+.progress-history-item strong{font-size:12px}.progress-history-item p{margin:5px 0 0;font-size:12px;color:var(--muted,#d2dfc7)}.progress-history-item small{display:block;margin-top:7px;color:#bde997}
+.admin-ops-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:18px;margin:18px 0}
+.admin-ops-actions{display:flex;flex-wrap:wrap;gap:10px}
+.admin-activity-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:20px 0 10px}
+.admin-activity-list,.admin-review-queue{display:grid;gap:8px;max-height:330px;overflow:auto}
+.admin-activity-item,.admin-queue-item{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:13px;background:rgba(10,28,15,.25);border:1px solid rgba(180,220,150,.12)}
+.admin-activity-item p,.admin-queue-item p{margin:3px 0 0;font-size:12px;color:var(--muted,#b9c7b2)}
+.admin-activity-item time{font-size:11px;white-space:nowrap;color:var(--muted,#b9c7b2)}
+.admin-queue-item b{font-size:13px}
+.admin-queue-item .queue-risk{font-size:11px;white-space:nowrap;border-radius:999px;padding:5px 8px;background:rgba(190,225,150,.12);color:#c9efa0}
+@media(max-width:900px){.progress-tracker-layout,.admin-ops-grid{grid-template-columns:1fr}}
+@media(max-width:500px){.progress-input-grid,.progress-stat-grid{grid-template-columns:1fr}}

@@ -1,0 +1,16 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+data/*.db
+data/*.db-shm
+data/*.db-wal
+data/*.joblib
+data/*metadata*.json
+firebase-service-account*.json
+*service-account*.json
+tests/
+app.py.before-hardening

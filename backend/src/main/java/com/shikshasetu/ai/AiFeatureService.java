@@ -1,0 +1,8 @@
+package com.shikshasetu.ai;
+import com.shikshasetu.model.*;import com.shikshasetu.repo.*;import org.springframework.stereotype.Service;import java.util.*;
+@Service public class AiFeatureService {
+ private final StudentRepository students;private final AcademicRecordRepository records;
+ public AiFeatureService(StudentRepository s,AcademicRecordRepository r){students=s;records=r;}
+ public AiFeatureVector forStudent(Long id){Student s=students.findById(id).orElseThrow(()->new NoSuchElementException("Student not found"));List<AcademicRecord> all=records.findByStudentIdOrderByRecordDateDescIdDesc(id);Integer streak=all.stream().map(AcademicRecord::getConsecutiveAbsences).filter(Objects::nonNull).findFirst().orElse(null);Map<String,List<AcademicRecord>> by=new HashMap<>();all.stream().filter(r->r.getMarksObtained()!=null&&r.getMaxMarks()!=null&&r.getMaxMarks()>0).forEach(r->by.computeIfAbsent(r.getSubject(),k->new ArrayList<>()).add(r));Double drop=null;Integer repeated=0;boolean hasSubjectPair=false;for(List<AcademicRecord> rows:by.values()){rows.sort(Comparator.comparing(AcademicRecord::getRecordDate).reversed().thenComparing(AcademicRecord::getId,Comparator.reverseOrder()));if(rows.size()<2)continue;hasSubjectPair=true;double latest=pct(rows.get(0)),prev=pct(rows.get(1));drop=drop==null?Math.max(0,prev-latest):Math.max(drop,Math.max(0,prev-latest));if(latest<40&&prev<40)repeated++;}return new AiFeatureVector(s.getAttendance(),s.getInternalMarks(),s.getAssignmentsCompleted(),(double)s.getPreviousFailures(),(double)s.getAbsences(),streak==null?null:streak.doubleValue(),drop,hasSubjectPair?repeated.doubleValue():null);}
+ private double pct(AcademicRecord r){return r.getMarksObtained()/r.getMaxMarks()*100.0;}
+}

@@ -1,0 +1,11 @@
+{
+ "info":{"name":"ShikshaSetu MVP API","schema":"https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},
+ "item":[
+  {"name":"Create student","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"studentCode\": \"STU-001\",\n  \"fullName\": \"Demo Student\",\n  \"email\": \"student@example.com\",\n  \"attendance\": 62,\n  \"internalMarks\": 48,\n  \"assignmentsCompleted\": 55,\n  \"previousFailures\": 1,\n  \"absences\": 8,\n  \"auditGroup\": \"Group-A\"\n}"},"url":"http://localhost:8080/api/students"}},
+  {"name":"Dashboard","request":{"method":"GET","url":"http://localhost:8080/api/dashboard"}},
+  {"name":"Assess student 1","request":{"method":"POST","url":"http://localhost:8080/api/students/1/assess"}},
+  {"name":"Risk history student 1","request":{"method":"GET","url":"http://localhost:8080/api/students/1/risk-history"}},
+  {"name":"Interventions","request":{"method":"GET","url":"http://localhost:8080/api/interventions"}},
+  {"name":"Fairness audit","request":{"method":"GET","url":"http://localhost:8080/api/fairness/audit"}}
+ ]
+}

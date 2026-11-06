@@ -1,0 +1,1 @@
+student_code,full_name,email,attendance,internal_marks,assignments_completed,previous_failures,absences,audit_group\nSTU-001,Demo Student,student1@example.com,62,48,55,1,8,Group-A\nSTU-002,Sample Learner,student2@example.com,91,82,95,0,1,Group-B\nSTU-003,Test Learner,student3@example.com,72,53,70,1,4,Group-A\n

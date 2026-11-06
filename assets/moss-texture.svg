@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560">
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d8e8c3"/>
+      <stop offset=".48" stop-color="#8ca96b"/>
+      <stop offset="1" stop-color="#315b3a"/>
+    </linearGradient>
+    <radialGradient id="mossA"><stop stop-color="#e8f2c9" stop-opacity=".9"/><stop offset=".55" stop-color="#a9c47d" stop-opacity=".45"/><stop offset="1" stop-color="#a9c47d" stop-opacity="0"/></radialGradient>
+    <radialGradient id="mossB"><stop stop-color="#335d3c" stop-opacity=".8"/><stop offset=".6" stop-color="#5d854d" stop-opacity=".42"/><stop offset="1" stop-color="#5d854d" stop-opacity="0"/></radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="24"/></filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" seed="17" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0" result="mono"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 .18"/></feComponentTransfer>
+    </filter>
+    <pattern id="speckle" width="47" height="43" patternUnits="userSpaceOnUse">
+      <circle cx="5" cy="9" r="1.5" fill="#f1f6d9" opacity=".5"/>
+      <circle cx="29" cy="17" r="2" fill="#244a2e" opacity=".25"/>
+      <circle cx="39" cy="36" r="1.2" fill="#f1f6d9" opacity=".42"/>
+      <path d="M13 30q5-6 9 0q-4 5-9 0Z" fill="#335d38" opacity=".2"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="560" fill="url(#base)"/>
+  <g filter="url(#soft)">
+    <ellipse cx="150" cy="85" rx="260" ry="185" fill="url(#mossA)"/>
+    <ellipse cx="710" cy="100" rx="300" ry="190" fill="url(#mossB)"/>
+    <ellipse cx="520" cy="480" rx="360" ry="210" fill="url(#mossA)"/>
+    <ellipse cx="70" cy="440" rx="250" ry="170" fill="url(#mossB)"/>
+  </g>
+  <rect width="900" height="560" fill="url(#speckle)" opacity=".8"/>
+  <rect width="900" height="560" filter="url(#grain)" opacity=".55"/>
+  <g fill="none" stroke="#f1f7d9" stroke-opacity=".25" stroke-width="2">
+    <path d="M-20 300Q130 190 255 290T530 280T920 215"/>
+    <path d="M-10 340Q150 230 290 335T570 320T920 260" stroke-opacity=".14"/>
+  </g>
+</svg>

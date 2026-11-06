@@ -1,0 +1,6 @@
+package com.shikshasetu.service;
+import com.shikshasetu.model.Institution;import com.shikshasetu.model.Student;import com.shikshasetu.repo.InstitutionRepository;import com.shikshasetu.repo.StudentRepository;import org.springframework.boot.ApplicationArguments;import org.springframework.boot.ApplicationRunner;import org.springframework.core.annotation.Order;import org.springframework.stereotype.Component;import org.springframework.transaction.annotation.Transactional;import java.util.UUID;
+@Component @Order(1) public class PortalTenantMigration implements ApplicationRunner{
+ private final InstitutionRepository institutions;private final StudentRepository students;public PortalTenantMigration(InstitutionRepository i,StudentRepository s){institutions=i;students=s;}
+ @Override @Transactional public void run(ApplicationArguments args){var legacy=institutions.findByAccessCodeIgnoreCase("LEGACY-RECORDS").orElseGet(()->{Institution i=new Institution();i.setName("Legacy records — platform review only");i.setAccessCode("LEGACY-RECORDS");i.setActive(false);return institutions.save(i);});for(Student s:students.findAllByInstitutionIdIsNull()){s.setInstitutionId(legacy.getId());students.save(s);}}
+}

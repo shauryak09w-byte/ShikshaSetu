@@ -1,0 +1,128 @@
+{
+  "title": "ShikshaSetu Living Nature Gallery",
+  "version": 1,
+  "sceneCount": 24,
+  "default": 0,
+  "scenes": [
+    {
+      "name": "Misty Rainforest Valley",
+      "category": "Monsoon",
+      "file": "assets/nature-gallery/01-misty-rainforest-valley.webp"
+    },
+    {
+      "name": "Hidden Forest Waterfall",
+      "category": "Waterfall",
+      "file": "assets/nature-gallery/02-hidden-forest-waterfall.webp"
+    },
+    {
+      "name": "Misty Tea Terraces",
+      "category": "Hills",
+      "file": "assets/nature-gallery/03-misty-tea-terraces.webp"
+    },
+    {
+      "name": "Mossy Woodland Creek",
+      "category": "Waterfall",
+      "file": "assets/nature-gallery/04-mossy-woodland-creek.webp"
+    },
+    {
+      "name": "Cloud-Wrapped Green Valley",
+      "category": "Monsoon",
+      "file": "assets/nature-gallery/05-cloud-wrapped-green-valley.webp"
+    },
+    {
+      "name": "Emerald Cascade",
+      "category": "Waterfall",
+      "file": "assets/nature-gallery/06-emerald-cascade.webp"
+    },
+    {
+      "name": "Quiet Mountain Lake",
+      "category": "Water",
+      "file": "assets/nature-gallery/07-quiet-mountain-lake.webp"
+    },
+    {
+      "name": "Fern-Lined Stream",
+      "category": "Waterfall",
+      "file": "assets/nature-gallery/08-fern-lined-stream.webp"
+    },
+    {
+      "name": "Rain-Kissed Fern Canopy",
+      "category": "Foliage",
+      "file": "assets/nature-gallery/09-rain-kissed-fern-canopy.webp"
+    },
+    {
+      "name": "Bamboo Mist Sanctuary",
+      "category": "Forest",
+      "file": "assets/nature-gallery/10-bamboo-mist-sanctuary.webp"
+    },
+    {
+      "name": "Western Ghats Tea Hills",
+      "category": "Hills",
+      "file": "assets/nature-gallery/11-western-ghats-tea-hills.webp"
+    },
+    {
+      "name": "Rainforest Creek Bend",
+      "category": "Waterfall",
+      "file": "assets/nature-gallery/12-rainforest-creek-bend.webp"
+    },
+    {
+      "name": "Sunlit Monsoon Trail",
+      "category": "Forest",
+      "file": "assets/nature-gallery/13-sunlit-monsoon-trail.webp"
+    },
+    {
+      "name": "Mossy Cascade Pool",
+      "category": "Waterfall",
+      "file": "assets/nature-gallery/14-mossy-cascade-pool.webp"
+    },
+    {
+      "name": "Fog Over Forest Lake",
+      "category": "Water",
+      "file": "assets/nature-gallery/15-fog-over-forest-lake.webp"
+    },
+    {
+      "name": "Rain on Broad Green Leaves",
+      "category": "Foliage",
+      "file": "assets/nature-gallery/16-rain-on-broad-green-leaves.webp"
+    },
+    {
+      "name": "Soft Dawn Woodland Path",
+      "category": "Forest",
+      "file": "assets/nature-gallery/17-soft-dawn-woodland-path.webp"
+    },
+    {
+      "name": "Forest Rapids",
+      "category": "Waterfall",
+      "file": "assets/nature-gallery/18-forest-rapids.webp"
+    },
+    {
+      "name": "Cloudy Hill Ridges",
+      "category": "Monsoon",
+      "file": "assets/nature-gallery/19-cloudy-hill-ridges.webp"
+    },
+    {
+      "name": "Rain-Soaked Tropical Leaves",
+      "category": "Foliage",
+      "file": "assets/nature-gallery/20-rain-soaked-tropical-leaves.webp"
+    },
+    {
+      "name": "Rainforest Leaf Canopy",
+      "category": "Foliage",
+      "file": "assets/nature-gallery/21-rainforest-leaf-canopy.webp"
+    },
+    {
+      "name": "Still Lake in the Mist",
+      "category": "Water",
+      "file": "assets/nature-gallery/22-still-lake-in-the-mist.webp"
+    },
+    {
+      "name": "Moss-Covered Forest Bridge",
+      "category": "Forest",
+      "file": "assets/nature-gallery/23-moss-covered-forest-bridge.webp"
+    },
+    {
+      "name": "Golden Light Over Green Hills",
+      "category": "Hills",
+      "file": "assets/nature-gallery/24-golden-light-over-green-hills.webp"
+    }
+  ]
+}

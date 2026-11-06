@@ -1,0 +1,3 @@
+package com.shikshasetu.repo;
+import com.shikshasetu.model.PortalUser; import org.springframework.data.jpa.repository.JpaRepository; import java.util.*;
+public interface PortalUserRepository extends JpaRepository<PortalUser,Long>{Optional<PortalUser> findByEmailIgnoreCase(String email); List<PortalUser> findByInstitutionIdAndAccountStatusOrderByCreatedAtAsc(Long institutionId,String status); List<PortalUser> findByInstitutionIdOrderByCreatedAtDesc(Long institutionId); long countByInstitutionIdAndAccountStatus(Long institutionId,String status); long countByInstitutionIdAndAccountStatusAndRole(Long institutionId,String status,String role); List<PortalUser> findByStudentId(Long studentId);}
